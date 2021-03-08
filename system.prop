@@ -63,6 +63,9 @@ persist.vendor.ims.disableDebugLogs=1
 persist.vendor.ims.disableIMSLogs=1
 persist.vendor.ims.disableQXDMLogs=1
 
+# FUSE
+persist.sys.fuse.passthrough.enable=true
+
 # Media
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
