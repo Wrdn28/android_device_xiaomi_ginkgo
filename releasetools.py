@@ -34,14 +34,21 @@ def IncrementalOTA_InstallEnd(info):
   OTA_InstallEnd(info, input_zip)
   return
 
-def AddImage(info, input_zip, basename, dest):
+def AddImage(info, input_zip, dir, basename, dest):
   name = basename
-  data = input_zip.read("IMAGES/" + basename)
+  data = input_zip.read(dir + "/"  + basename)
   common.ZipWriteStr(info.output_zip, name, data)
   info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
 
+def FullOTA_InstallBegin(info):
+  AddImage(info, "RADIO", "super_dummy.img", "/tmp/super_dummy.img");
+  info.script.AppendExtra('package_extract_file("install/bin/flash_super_dummy.sh", "/tmp/flash_super_dummy.sh");')
+  info.script.AppendExtra('set_metadata("/tmp/flash_super_dummy.sh", "uid", 0, "gid", 0, "mode", 0755);')
+  info.script.AppendExtra('run_program("/tmp/flash_super_dummy.sh");')
+  return
+
 def OTA_InstallEnd(info, input_zip):
-  AddImage(info, input_zip, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
-  AddImage(info, input_zip, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
+  AddImage(info, "IMAGES", input_zip, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
+  AddImage(info, "IMAGES", input_zip, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
   return
