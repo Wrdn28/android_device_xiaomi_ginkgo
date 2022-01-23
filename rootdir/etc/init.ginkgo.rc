@@ -1,0 +1,154 @@
+#
+# Custom ginkgo-specific init script
+#
+
+on early-init
+    # Boost schedtune
+    write /dev/stune/schedtune.boost 50
+    write /dev/stune/schedtune.prefer_idle 1
+
+    # Boost I/O performance
+    write /sys/block/mmcblk0/queue/scheduler "noop"
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/nr_requests 256
+    write /sys/block/mmcblk0/queue/iostats 0
+
+on post-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start vendor.hwcomposer-2-4
+    start vendor.configstore-hal
+    start vendor.qti.hardware.display.allocator
+
+on boot
+    # DT2W
+    chmod 0660 /sys/touchpanel/double_tap
+
+    # GPU boost
+    chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+
+    # Kernelspace battery saver
+    chown system system /sys/module/battery_saver/parameters/enabled
+    chmod 0660 /sys/module/battery_saver/parameters/enabled
+
+    # KCAL
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_cont
+
+    # Vibration
+    chown system system /sys/class/leds/vibrator/vtg_level
+    chmod 0660 /sys/class/leds/vibrator/vtg_level
+
+    # Thermal Profile
+    write /sys/class/thermal/thermal_message/sconfig 0
+
+service nqnfcinfo /vendor/bin/nqnfcinfo
+    class late_start
+    group nfc
+    user system
+    oneshot
+    override
+    disabled
+
+service nqnfc_2_0_hal_service /vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
+    class hal
+    user nfc
+    group nfc
+    override
+    disabled
+
+on property:ro.product.device=willow
+    enable nqnfcinfo
+    enable nqnfc_2_0_hal_service
+
+on property:ro.boot.hwversion=*
+    setprop vendor.boot.hwversion ${ro.boot.hwversion}
+
+on property:persist.sys.device_provisioned=1
+    # Use foreground cpuset for dex2oat
+    setprop dalvik.vm.dex2oat-cpu-set 0,1,2,5,6,7
+    setprop dalvik.vm.dex2oat-threads 6
+
+on property:sys.boot_completed=1
+    write /dev/stune/schedtune.prefer_idle 0
+    write /dev/stune/schedtune.boost 0
+
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.qcom
+
+on property:vendor.post_boot.parsed=1
+    # Setup cpusets
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-2,5-7
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-3
+
+    # Setup cpu boosting
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1305600 4:1401600"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 100
+    write /sys/module/cpu_boost/parameters/powerkey_input_boost_freq "0:1804800 4:2016000"
+    write /sys/module/cpu_boost/parameters/powerkey_input_boost_ms 750
+
+    # Setup default schedTune value for foreground/top-app
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 1
+    write /dev/stune/top-app/schedtune.prefer_idle 1
+
+    # Setup scheduler tunables
+    write /proc/sys/kernel/sched_upmigrate 85
+    write /proc/sys/kernel/sched_downmigrate 75
+    write /proc/sys/kernel/sched_child_runs_first 1
+
+    # Setup EAS tunables
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 4000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 16000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1612800
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/pl 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 864000
+
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 4000
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 16000
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1804800
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/pl 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 902400
+
+    # Report max frequency to unity tasks
+    write /proc/sys/kernel/sched_lib_name "UnityMain,libunity.so"
+    write /proc/sys/kernel/sched_lib_mask_force 255
+
+    # ZRAM setup
+    write /sys/block/zram0/comp_algorithm lz4
+    write /sys/block/zram0/max_comp_streams 8
+    write /proc/sys/vm/page-cluster 0
+
+    # Restore default I/O tuning
+    write /sys/block/mmcblk0/queue/scheduler "cfq"
+    write /sys/block/mmcblk0/queue/nr_requests 128
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk1/queue/read_ahead_kb 128
+
+    # Back to default VM settings
+    write /proc/sys/vm/dirty_expire_centisecs 3000
+    write /proc/sys/vm/dirty_background_ratio 10
+
+    # Enable idle state listener
+    write /sys/class/drm/card0/device/idle_encoder_mask 1
+    write /sys/class/drm/card0/device/idle_timeout_ms 100
+
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
+on charger
+    chown system system /sys/class/leds/red/brightness
+    write /sys/class/leds/red/brightness 255
