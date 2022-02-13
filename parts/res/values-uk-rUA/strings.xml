@@ -20,6 +20,7 @@
     <string name="device_settings_title">Налаштування Xiaomi</string>
     <string name="device_settings_summary">Додаткові налаштування</string>
     <string name="audio_title">Аудіо</string>
+    <string name="display_title">Дисплей</string>
 
     <!-- Dirac settings -->
     <string name="dirac_title">Поліпшення звуку Mi</string>
@@ -63,6 +64,7 @@
     <string name="dirac_preset_country">Кантрі</string>
     <string name="dirac_preset_dance">Танцювальна</string>
     <string name="dirac_preset_metal">Метал</string>
+    <string name="dirac_preset_bass_booster">Підсилювач басів</string>
 
     <!-- QS tile title -->
     <string name="dirac_qs_tile_title">Mi звук</string>
@@ -75,8 +77,10 @@
     <!-- Kcal settings -->
     <string name="kcal_settings_title">Калібрування кольорів екрану</string>
     <string name="kcal_settings_summary">Редагуйте кольори вашого екрана за допомогою KCAL</string>
+    <string name="kcal_enable">Ввімкнути KCAL</string>
+    <string name="kcal_not_supported">Налаштування кольору дисплея не підтримуються ядром</string>
     <string name="kcal_enable_title">Конфігурації кольорів екрану</string>
-    <string name="kcal_enable_summary">Включає налаштування кольорів екрана для його редагування</string>
+    <string name="kcal_enable_summary">Вмикає налаштування кольорів екрана для його редагування</string>
     <string name="red_slider_title">Червоний</string>
     <string name="green_slider_title">Зелений</string>
     <string name="blue_slider_title">Синій</string>    
