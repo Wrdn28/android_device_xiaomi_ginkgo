@@ -24,6 +24,7 @@
   <!-- Device specific settings -->
   <string name="device_settings_app_name">Дополнительные настройки</string>
   <!-- Ambient Display -->
+  <string name="ambient_display_enable">Использовать «Активный экран»</string>
   <string name="ambient_display_title">Индикация событий</string>
   <!-- Tilt sensor -->
   <string name="tilt_sensor_title">Датчик наклона</string>
@@ -41,9 +42,14 @@
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Включение по датчикам</string>
   <string name="proximity_wake_enable_summary">Проведите ладонью над экраном, чтобы вывести устройство из режима сна</string>
+  <!-- Wake on gesture -->
+  <string name="wake_on_gesture_title">Пробуждения жестами</string>
+  <string name="wake_on_gesture_summary">Разбудить устройство жестом вместо пульсирующих уведомлений</string>
   <!-- Dialog texts -->
   <string name="dialog_ok">OK</string>
   <!-- Help texts -->
   <string name="doze_settings_help_title">Информация</string>
   <string name="doze_settings_help_text">Эти функции используют события датчиков для отображения уведомлений. Датчик проверяется только при поступлении нового уведомления, что помогает сэкономить заряд батареи. Можно активировать включение датчика сразу при отключении экрана устройства, однако это может ускорить разряд батареи.</string>
+  <!-- Doze Tile Service -->
+  <string name="ambient_display_gestures_title">Жесты «Активного экрана»</string>
 </resources>
