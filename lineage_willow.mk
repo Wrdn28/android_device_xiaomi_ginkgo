@@ -35,3 +35,6 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 8/8T
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Inherit GApps
+$(call inherit-product, vendor/gapps/common/common-vendor.mk)
