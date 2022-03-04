@@ -364,6 +364,10 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
+# Remove packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # RIL
 PRODUCT_PACKAGES += \
     libjson \
