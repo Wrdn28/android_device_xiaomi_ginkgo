@@ -69,4 +69,4 @@ ro.zram.first_wb_delay_mins=1440
 ro.zram.periodic_wb_delay_hours=24
 
 # Disable vsync for cpu rendered apps
-debug.cpurend.vsync=false
+#debug.cpurend.vsync=false
