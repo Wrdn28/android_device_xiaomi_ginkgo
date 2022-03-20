@@ -40,4 +40,4 @@ PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Inherit GApps
-$(call inherit-product, vendor/gapps/common/common-vendor.mk)
+#$(call inherit-product, vendor/gapps/common/common-vendor.mk)
