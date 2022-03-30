@@ -365,9 +365,9 @@
     <!-- Volume controls -->
     <ctl name="WSA_RX0 Digital Volume" value="84" />
     <ctl name="WSA_RX1 Digital Volume" value="84" />
-    <ctl name="RX_RX0 Digital Volume" value="98" />
-    <ctl name="RX_RX1 Digital Volume" value="98" />
-    <ctl name="RX_RX2 Digital Volume" value="98" />
+    <ctl name="RX_RX0 Digital Volume" value="84" />
+    <ctl name="RX_RX1 Digital Volume" value="84" />
+    <ctl name="RX_RX2 Digital Volume" value="84" />
     <ctl name="HPHL Volume" value="20" />
     <ctl name="HPHR Volume" value="20" />
     <ctl name="EAR SPKR PA Gain" value="G_DEFAULT" />
@@ -2788,14 +2788,14 @@
     <!-- Add for ce mode 20181206-->
     <path name="headphones-ce">
         <path name="headphones" />
-        <ctl name="RX_RX0 Digital Volume" value="98" />
-        <ctl name="RX_RX1 Digital Volume" value="98" />
+        <ctl name="RX_RX0 Digital Volume" value="76" />
+        <ctl name="RX_RX1 Digital Volume" value="76" />
     </path>
 
     <path name="headphones-no-ce">
         <path name="headphones" />
-        <ctl name="RX_RX0 Digital Volume" value="98" />
-        <ctl name="RX_RX1 Digital Volume" value="98" />
+        <ctl name="RX_RX0 Digital Volume" value="84" />
+        <ctl name="RX_RX1 Digital Volume" value="84" />
     </path>
     <!-- Add for ce mode end-->
     <path name="headphones-44.1">
