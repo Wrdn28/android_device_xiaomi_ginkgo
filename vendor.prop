@@ -184,6 +184,9 @@ vendor.gralloc.disable_ubwc=0
 # DRM
 drm.service.enabled=true
 
+# Disable Skia tracing by default
+debug.hwui.skia_atrace_enabled=false
+
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
