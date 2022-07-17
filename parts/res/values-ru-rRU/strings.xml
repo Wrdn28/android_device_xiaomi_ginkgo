@@ -20,6 +20,7 @@
     <string name="device_settings_title">Настройки Xiaomi</string>
     <string name="device_settings_summary">Дополнительные настройки</string>
     <string name="audio_title">Аудио</string>
+    <string name="display_title">Экран</string>
 
     <!-- Dirac settings -->
     <string name="dirac_title">Улучшение звука Mi</string>
