@@ -838,4 +838,7 @@
 
     <!-- Exempt cne from privacy (location) indicators -->
     <string name="config_systemTelephonyPackage" translatable="false">com.qualcomm.qti.cne</string>
+
+    <!-- Smart charging -->
+    <bool name="config_smartChargingAvailable">true</bool>
 </resources>
