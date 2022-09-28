@@ -18,7 +18,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     packages/resources/translations/overlay
 
 PRODUCT_PACKAGES += \
-    GinkgoMiuiCamera \
     GinkgoNoCutoutOverlay \
     NotchBarKiller \
     WillowFrameworkRes
@@ -89,9 +88,6 @@ PRODUCT_COPY_FILES += \
 
 # Blur
 TARGET_ENABLE_BLUR := true
-
-# Camera
-$(call inherit-product, vendor/miuicamera/config.mk)
 
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
@@ -232,10 +228,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
-
-# Keyhandler
-PRODUCT_PACKAGES += \
-    KeyHandler
 
 # Keymaster
 PRODUCT_PACKAGES += \
