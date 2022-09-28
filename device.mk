@@ -14,8 +14,8 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
 
 # Overlays - RU translations
-DEVICE_PACKAGE_OVERLAYS += \
-    packages/resources/translations/overlay
+#DEVICE_PACKAGE_OVERLAYS += \
+#    packages/resources/translations/overlay
 
 PRODUCT_PACKAGES += \
     GinkgoNoCutoutOverlay \
