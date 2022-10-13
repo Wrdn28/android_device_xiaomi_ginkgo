@@ -24,12 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 $(call inherit-product, device/xiaomi/willow/device.mk)
 
 # Inherit some common LineageOS stuff
-TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_INCLUDE_PIXEL_CHARGER := true
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# Enable quick tap
-TARGET_SUPPORTS_QUICK_TAP := true
 
 # Device identifier
 PRODUCT_NAME := lineage_willow
@@ -38,6 +33,3 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 8/8T
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-# Inherit GApps
-#$(call inherit-product, vendor/gapps/common/common-vendor.mk)

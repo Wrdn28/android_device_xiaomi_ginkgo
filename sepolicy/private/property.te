@@ -1,1 +1,1 @@
-system_internal_prop(persist_lcd_prop)
+type persist_lcd_prop, property_type, system_property_type;
