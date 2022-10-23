@@ -26,6 +26,9 @@ $(call inherit-product, device/xiaomi/willow/device.mk)
 # Inherit some common LineageOS stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Enable quick tap
+TARGET_SUPPORTS_QUICK_TAP := true
+
 # Device identifier
 PRODUCT_NAME := lineage_willow
 PRODUCT_DEVICE := willow
