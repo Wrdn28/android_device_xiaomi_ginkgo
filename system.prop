@@ -11,7 +11,7 @@ persist.vendor.btstack.enable.splita2dp=true
 vendor.bluetooth.soc=cherokee
 
 # Blur
-persist.sys.sf.disable_blurs=1
+#persist.sys.sf.disable_blurs=1
 
 # Camera
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
