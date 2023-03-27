@@ -24,6 +24,9 @@ persist.vendor.cne.feature=1
 persist.vendor.dpm.feature=11
 persist.vendor.dpmhalservice.enable=1
 
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
 # Display
 persist.lcd.cabc_mode=1
 persist.lcd.hbm_mode=0
