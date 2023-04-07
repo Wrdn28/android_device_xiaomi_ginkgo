@@ -38,7 +38,4 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <!-- FPSInfoService Fps file path -->
     <string name="config_fpsInfoSysNode" translatable="false">/sys/class/drm/card0/sde-crtc-0/measured_fps</string>	
-
-    <!-- Whether the combined qs shows in status bar -->
-    <bool name="flag_combined_qs_headers">false</bool>
 </resources>
