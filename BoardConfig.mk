@@ -195,3 +195,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/ginkgo/BoardConfigVendor.mk
+
+# Include the gapps BoardConfig
+-include vendor/gapps/BoardConfigVendor.mk
