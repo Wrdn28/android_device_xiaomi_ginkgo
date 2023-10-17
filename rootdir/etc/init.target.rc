@@ -90,10 +90,6 @@ on post-fs-data
 #Creat charger logg
     mkdir /data/vendor/charge_logger system
 
-    # Dolby
-    mkdir /data/vendor/dolby 0770 media media
-    mkdir /data/vendor/multimedia 0775 system system
-
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
