@@ -14,6 +14,10 @@ LOCAL_PRIVATE_PLATFORM_APIS := true
 
 LOCAL_USE_AAPT2 := true
 
+LOCAL_OPTIONAL_USES_LIBRARIES := \
+    androidx.window.extensions \
+    androidx.window.sidecar
+
 LOCAL_STATIC_ANDROID_LIBRARIES := \
     SettingsLib
 
