@@ -94,19 +94,14 @@ on post-fs-data
 # Silver Only configuration cannot work with 0-7
 on boot
     chown system system /sys/kernel/hbtp/display_pwr
-    start rmt_storage
+    start vendor.rmt_storage
     start rfs_access
-    write /dev/cpuset/top-app/cpus 0-3
     write /dev/cpuset/audio-app/cpus 1-2
-    write /dev/cpuset/foreground/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-3
-    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-6
+    write /dev/cpuset/foreground/boost/cpus 0-6
+    write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/foreground/boost/cpus 0-7
-    write /dev/cpuset/background/cpus 0-7
-    write /dev/cpuset/system-background/cpus 0-7
 
 # Add a cpuset for the camera daemon
 # We want all cores for camera
@@ -386,6 +381,12 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    oneshot
    disabled
 
+service adsprpcd /vendor/bin/adsprpcd
+   class main
+   user media
+   group media
+   disabled
+
 service ppd /vendor/bin/mm-pp-dpps
     class late_start
     user system
@@ -494,6 +495,3 @@ on post-fs && property:ro.boot.product.hardware.sku=ginkgo
 
 on post-fs && property:ro.boot.product.hardware.sku=willow
     mount none /vendor/firmware_mnt/image/bdf_c3x.bin /vendor/firmware_mnt/image/bdwlan.bin bind
-
-    # Enable suspend to RAM
-    write /sys/power/mem_sleep "deep"

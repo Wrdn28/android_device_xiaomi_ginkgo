@@ -27,16 +27,12 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="24"/>
-
     <application
         android:label="@string/device_settings_app_name"
         android:persistent="true"
         android:theme="@style/Theme.SubSettingsBase">
 
-        <receiver android:name=".BootCompletedReceiver">
+         <receiver android:name=".BootCompletedReceiver" android:exported="false">
             <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -46,8 +42,8 @@
         <activity
             android:name=".DeviceSettingsActivity"
             android:label="@string/device_settings_title"
-            android:icon="@drawable/ic_device_settings"
             android:exported="false"
+            android:icon="@drawable/ic_device_settings"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,6 +73,7 @@
 
         <service
             android:name=".dirac.DiracTileService"
+            android:exported="true"
             android:icon="@drawable/ic_headphone"
             android:label="@string/dirac_qs_tile_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -109,6 +106,7 @@
             android:name=".display.HbmTileService"
             android:icon="@drawable/ic_hbm"
             android:label="@string/lcd_hbm_tile_title"
+            android:exported="true"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
@@ -119,6 +117,7 @@
             android:name=".display.CabcTileService"
             android:icon="@drawable/ic_cabc"
             android:label="@string/lcd_cabc_title"
+            android:exported="true"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>

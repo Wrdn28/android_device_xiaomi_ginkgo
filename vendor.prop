@@ -60,7 +60,7 @@ vendor.audio.feature.vbat.enable=true
 vendor.audio.feature.wsa.enable=false
 vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio.noisy.broadcast.delay=600
-vendor.audio.offload.buffer.size.kb=256
+vendor.audio.offload.buffer.size.kb=32
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=false
@@ -136,7 +136,6 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 # Data
 persist.vendor.data.iwlan.enable=true
 persist.vendor.data.mode=concurrent
-ro.telephony.iwlan_operation_mode=legacy
 ro.vendor.use_data_netmgrd=true
 
 # Display
@@ -145,17 +144,17 @@ debug.mdpcomp.logs=0
 debug.sf.disable_client_composition_cache=1
 debug.sf.layer_caching_active_layer_timeout_ms=1000
 debug.sf.disable_backpressure=1
-debug.sf.enable_hwc_vds=0
-debug.sf.latch_unsignaled=0
+debug.sf.enable_hwc_vds=1
+debug.sf.auto_latch_unsignaled=true
 debug.sf.hw=1
 debug.sf.predict_hwc_composition_strategy=0
-debug.sf.treat_170m_as_sRGB=1
-ro.hwui.render_ahead=20
+ro.config.avoid_gfx_accel=true
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
 ro.opengles.version=196610
 ro.vendor.display.sensortype=2
 ro.vendor.display.svi=1
+debug.sf.treat_170m_as_sRGB=1
 vendor.display.comp_mask=0
 vendor.display.dataspace_saturation_matrix=1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0
 vendor.display.disable_decimation=1
@@ -188,7 +187,6 @@ ro.hardware.keystore_desede=true
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-ro.vendor.perf.scroll_opt=true
 
 # RIL
 persist.dbg.volte_avail_ovr=1

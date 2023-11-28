@@ -5,22 +5,12 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
 # Vendor blobs
 $(call inherit-product, vendor/xiaomi/ginkgo/ginkgo-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
-
-# Overlays - RU translations
-DEVICE_PACKAGE_OVERLAYS += \
-    packages/resources/translations/overlay
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    packages/resources/translations/overlay
+    $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
     GinkgoNoCutoutOverlay \
@@ -34,6 +24,9 @@ PRODUCT_PACKAGES += \
 # ANT+
 PRODUCT_PACKAGES += \
     com.dsi.ant@1.0.vendor
+
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -80,21 +73,19 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
+    com.qualcomm.qti.bluetooth_audio@1.0.vendor \
+    libbtconfigstore \
+    libbthost_if \
+    libldacBT_enc \
+    libldacBT_abr \
+    libldacBT_bco \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
-    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
-
-# Blur
-TARGET_ENABLE_BLUR := true
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2340
-TARGET_SCREEN_WIDTH := 1080
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -103,17 +94,13 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     android.hidl.memory.block@1.0.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
-    libwatermark_shim
+    libpiex_shim
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
-
-PRODUCT_SYSTEM_PROPERTIES += \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
-    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -128,6 +115,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.4-impl \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
@@ -147,14 +135,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
-    frameworks/native/data/etc/android.software.opengles.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
-    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml
 
-# Doze
-PRODUCT_PACKAGES += \
-    XiaomiDoze
+# Screen Resolution
+TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_WIDTH := 1080
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -209,9 +196,7 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0.vendor
 
 PRODUCT_PACKAGES += \
-    libhidltransport \
     libhidltransport.vendor \
-    libhwbinder \
     libhwbinder.vendor
 
 # IMS
@@ -251,14 +236,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.ginkgo
 
-# Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
-
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -292,6 +269,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
+# Lineage Health
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+
 # Netmgr
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor
@@ -301,22 +282,22 @@ PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
 # NFC
-#PRODUCT_SOONG_NAMESPACES += \
+PRODUCT_SOONG_NAMESPACES += \
     vendor/nxp/opensource/sn100x
 
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     com.nxp.nfc.nq \
     NQNfcNci \
     Tag \
     vendor.nxp.hardware.nfc@2.0-service
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/libnfc-nxp_RF.conf
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/android.hardware.nfc.xml \
@@ -330,6 +311,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/parts/init.xiaomiparts.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.xiaomiparts.rc
+
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 # Power
 PRODUCT_PACKAGES += \
@@ -374,10 +357,6 @@ PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
     PresencePolling \
     RcsService
-
-# Remove packages
-PRODUCT_PACKAGES += \
-    RemovePackages
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -424,6 +403,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
+    vendor/qcom/opensource/usb/etc
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -450,10 +430,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal/thermal-engine-camera.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-camera.conf \
     $(LOCAL_PATH)/configs/thermal/thermal-engine-map.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-map.conf \
     $(LOCAL_PATH)/configs/thermal/thermal-engine-normal.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-normal.conf
-
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \

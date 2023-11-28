@@ -10,8 +10,13 @@ persist.vendor.btstack.absvolfeature=true
 persist.vendor.btstack.enable.splita2dp=true
 vendor.bluetooth.soc=cherokee
 
+# Blur
+persist.sys.sf.disable_blurs=1
+
 # Camera
+persist.sys.camera.fallback_id_2=20
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
+persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
 
 # Charger
 ro.charger.enable_suspend=true
@@ -20,9 +25,6 @@ ro.charger.enable_suspend=true
 persist.vendor.cne.feature=1
 persist.vendor.dpm.feature=11
 persist.vendor.dpmhalservice.enable=1
-
-# Disable vsync for cpu rendered apps
-debug.cpurend.vsync=false
 
 # Display
 persist.lcd.cabc_mode=1
@@ -39,11 +41,6 @@ persist.vendor.ims.disableADBLogs=1
 persist.vendor.ims.disableDebugLogs=1
 persist.vendor.ims.disableIMSLogs=1
 persist.vendor.ims.disableQXDMLogs=1
-
-# LMK
-ro.lmk.filecache_min_kb=153600
-ro.lmk.kill_timeout_ms=50
-ro.lmk.stall_limit_critical=40
 
 # Media
 debug.stagefright.ccodec=1
@@ -66,6 +63,7 @@ ro.netflix.bsp_rev=Q6125-17995-1
 # SkiaGL Threaded
 debug.renderengine.backend=skiaglthreaded
 debug.hwui.renderer=skiagl
+renderthread.skia.reduceopstasksplitting=true
 
 # ZRAM
 ro.zram.mark_idle_delay_mins=60
