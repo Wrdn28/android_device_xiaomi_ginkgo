@@ -282,22 +282,18 @@ PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
 # NFC
-#PRODUCT_SOONG_NAMESPACES += \
-    vendor/nxp/opensource/sn100x
-
-#PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    com.nxp.nfc.nq \
-    NQNfcNci \
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2-service \
+    android.hardware.secure_element@1.0-service \
+    NfcNci \
     Tag \
-    vendor.nxp.hardware.nfc@2.0-service
+    SecureElement
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/libnfc-nxp_RF.conf
+    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/android.hardware.nfc.xml \
