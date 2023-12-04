@@ -499,4 +499,3 @@ on post-fs && property:ro.boot.product.hardware.sku=willow
 on post-fs-data && property:ro.boot.product.hardware.sku=willow
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
-    mkdir /data/vendor/secure_element 0770 nfc nfc
