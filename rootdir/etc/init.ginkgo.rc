@@ -67,7 +67,6 @@ service nqnfc_1_2_hal_service /vendor/bin/hw/vendor.nxp.hardware.nfc@1.2-service
     disabled
 
 on property:ro.product.device=willow
-    enable nqnfcinfo
     enable vendor.nfc_hal_service
     enable nqnfc_1_2_hal_service
 
