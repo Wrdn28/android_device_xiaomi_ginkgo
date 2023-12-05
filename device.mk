@@ -411,8 +411,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
-    hardware/google/pixel \
-    vendor/qcom/opensource/usb/etc
+    hardware/google/pixel
 
 # Telephony
 PRODUCT_PACKAGES += \
