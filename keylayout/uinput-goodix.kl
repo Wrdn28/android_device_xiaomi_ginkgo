@@ -9,6 +9,8 @@
 #
 #key 96   DPAD_CENTER  
 #key 96  DPAD_CENTER
+
+key 96     CAMERA
 #key 102   HOME
 #key 105   DPAD_LEFT
 #key 106   DPAD_RIGHT
