@@ -17,6 +17,6 @@
           {device} - Device name
           {type} - Build type
     -->
-    <string name="updater_server_url" translatable="false">https://garry-rogov.ru/14/willow.json</string>
+    <string name="updater_server_url" translatable="false">https://garry-rogov.ru/14/gapps/willow.json</string>
     <string name="menu_changelog_url" translatable="false">https://garry-rogov.ru/14/changelog.html</string>
 </resources>
