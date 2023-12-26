@@ -180,6 +180,7 @@ vendor.display.enable_optimize_refresh=1
 vendor.display.svi.config=1
 vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
 vendor.gralloc.disable_ubwc=0
+vendor.perf.framepacing.enable=1
 
 # DRM
 drm.service.enabled=true
