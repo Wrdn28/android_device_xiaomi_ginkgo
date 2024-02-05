@@ -43,9 +43,6 @@ dalvik.vm.dex2oat-threads=8
 # Fwk detect
 ro.vendor.qti.va_aosp.support=1
 
-# FUSE passthrough
-persist.sys.fuse.passthrough.enable=true
-
 # Fling
 ro.min.fling_velocity=160 
 ro.max.fling_velocity=20000
