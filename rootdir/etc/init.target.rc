@@ -499,3 +499,6 @@ on post-fs && property:ro.boot.product.hardware.sku=willow
 on post-fs-data && property:ro.boot.product.hardware.sku=willow
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
+
+# Enable suspend to RAM
+    write /sys/power/mem_sleep "deep"
