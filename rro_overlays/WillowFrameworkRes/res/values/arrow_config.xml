@@ -29,4 +29,6 @@
          Used to decide if we show pulse settings -->
     <bool name="config_ledCanPulse">false</bool>
 
+    <!-- Show battery cycle count -->
+    <bool name="config_show_battery_cycle_count" translatable="false">true</bool>
 </resources>
