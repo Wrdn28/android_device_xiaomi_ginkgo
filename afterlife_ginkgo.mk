@@ -23,19 +23,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 # Inherit from ginkgo device
 $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 
-# Inherit some common LineageOS stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Afterlife stuff.
+$(call inherit-product, vendor/afterlife/config/common_full_phone.mk)
 
-ORION_MAINTAINER := Hirokixd
-ORION_MAINTAINER_LINK := https://t.me/Hirokixd28
-ORION_GAPPS := false
-TARGET_ENABLE_BLUR := false
-BUILD_GOOGLE_CONTACTS := true
-BUILD_GOOGLE_DIALER := true
-BUILD_GOOGLE_MESSAGE := true
+# Afterlife flags
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_BOOT_ANIMATION_RES := 1080
+AFTERLIFE_GAPPS := false
+AFTERLIFE_MAINTAINER := Hirokixd
 
 # Device identifier
-PRODUCT_NAME := orion_ginkgo
+PRODUCT_NAME := afterlife_ginkgo
 PRODUCT_DEVICE := ginkgo
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 8/8T
