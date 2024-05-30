@@ -20,14 +20,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
-# Inherit GApps
-$(call inherit-product, vendor/gapps/products/gapps.mk)
-
 # Inherit from ginkgo device
 $(call inherit-product, device/xiaomi/willow/device.mk)
 
 # Inherit some common LineageOS stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+ORION_MAINTAINER := Hirokixd
+ORION_GAPPS := true
+TARGET_ENABLE_BLUR := true
 
 # Device identifier
 PRODUCT_NAME := lineage_willow
