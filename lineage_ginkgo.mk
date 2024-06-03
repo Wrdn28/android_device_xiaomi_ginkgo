@@ -27,8 +27,8 @@ $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 ORION_MAINTAINER := Hirokixd
-ORION_GAPPS := true
-TARGET_ENABLE_BLUR := true
+ORION_GAPPS := false
+TARGET_ENABLE_BLUR := false
 
 # Device identifier
 PRODUCT_NAME := lineage_ginkgo
