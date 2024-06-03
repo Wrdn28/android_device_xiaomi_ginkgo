@@ -6,7 +6,7 @@
 #
 
 BOARD_VENDOR := xiaomi
-DEVICE_PATH := device/xiaomi/willow
+DEVICE_PATH := device/xiaomi/ginkgo
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_DUP_SYSPROP := true

@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_willow.mk
+    $(LOCAL_DIR)/lineage_ginkgo.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_willow-user \
-    lineage_willow-userdebug \
-    lineage_willow-eng
+    lineage_ginkgo-user \
+    lineage_ginkgo-userdebug \
+    lineage_ginkgo-eng

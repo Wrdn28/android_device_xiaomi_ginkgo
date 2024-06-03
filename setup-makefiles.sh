@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE=willow
+DEVICE=ginkgo
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
