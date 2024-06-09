@@ -27,6 +27,7 @@ $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 ORION_MAINTAINER := Hirokixd
+ORION_MAINTAINER_LINK := https://t.me/Hirokixd28
 ORION_GAPPS := false
 TARGET_ENABLE_BLUR := false
 
