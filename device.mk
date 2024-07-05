@@ -371,7 +371,8 @@ PRODUCT_PACKAGES += \
     libjson \
     libprotobuf-cpp-full \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
-    librmnetctl
+    librmnetctl \
+    libsqlite.vendor:64
 
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
