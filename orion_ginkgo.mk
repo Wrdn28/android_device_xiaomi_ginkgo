@@ -28,7 +28,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 ORION_MAINTAINER := Hirokixd
 ORION_MAINTAINER_LINK := https://t.me/Hirokixd28
-ORION_GAPPS := false
+ORION_GAPPS := true
 TARGET_ENABLE_BLUR := false
 
 # Device identifier
