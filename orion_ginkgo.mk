@@ -28,8 +28,11 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 ORION_MAINTAINER := Hirokixd
 ORION_MAINTAINER_LINK := https://t.me/Hirokixd28
-ORION_GAPPS := true
+ORION_GAPPS := false
 TARGET_ENABLE_BLUR := false
+BUILD_GOOGLE_CONTACTS := true
+BUILD_GOOGLE_DIALER := true
+BUILD_GOOGLE_MESSAGE := true
 
 # Device identifier
 PRODUCT_NAME := orion_ginkgo
