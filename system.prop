@@ -81,6 +81,53 @@ vendor.mm.enable.qcom_parser=63963135
 # Netflix
 ro.netflix.bsp_rev=Q6125-17995-1
 
+# SPAMMY S Log Tags
+persist.log.tag.AnalyticsService=S
+persist.log.tag.KernelCpuUidActiveTimeReader=S
+persist.log.tag.Tracer=S
+persist.log.tag.NearbySharing=S
+persist.log.tag.IntervalStats=S
+persist.log.tag.CompatibilityChangeReporter=S
+persist.log.tag.SQLiteLog=S
+persist.log.tag.wificond=S
+persist.log.tag.b/223498680=S
+persist.log.tag.TrafficStats=S
+persist.log.tag.ContrastColorUtil=S
+persist.log.tag.OpenGLRenderer=S
+persist.log.tag.ultrasound_extn=S
+
+# SPAMMY E Log Tags
+persist.log.tag.ApexManager=E
+persist.log.tag.ApexManagerTiming=E
+persist.log.tag.CoreBackPreview=E
+persist.log.tag.CompatConfig=E
+persist.log.tag.GameManagerService=E
+persist.log.tag.HotseatPredictionController=E
+persist.log.tag.JobScheduler=E
+persist.log.tag.LineageSystemServer=E
+persist.log.tag.MiStcImpl=E
+persist.log.tag.NearbyConnections=E
+persist.log.tag.PackageManager=E
+persist.log.tag.PackageParsing=E
+persist.log.tag.PackageSettings=E
+persist.log.tag.RecyclerView=E
+persist.log.tag.SDM=E
+persist.log.tag.SDM-histogram=E
+persist.log.tag.ShellRecents=E
+persist.log.tag.SRE=E
+persist.log.tag.StorageManagerService=E
+persist.log.tag.SystemConfig=E
+persist.log.tag.SystemServerTiming=E
+persist.log.tag.SystemServerTimingAsync=E
+persist.log.tag.SystemServiceManager=E
+persist.log.tag.Telecom=E
+persist.log.tag.UserManagerService=E
+persist.log.tag.UserSystemPackageInstaller=E
+persist.log.tag.WifiHAL=E
+persist.log.tag.WindowManager=E
+persist.log.tag.WindowManagerShell=E
+persist.log.tag.android.vending=E
+
 # ZRAM
 ro.zram.mark_idle_delay_mins=60
 ro.zram.first_wb_delay_mins=1440
