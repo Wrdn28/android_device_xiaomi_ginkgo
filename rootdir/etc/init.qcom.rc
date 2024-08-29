@@ -946,3 +946,7 @@ service vendor.hwcomposer-2-4 /vendor/bin/hw/android.hardware.graphics.composer@
     onrestart restart surfaceflinger
     writepid /dev/cpuset/system-background/tasks
     socket pps stream 0660 system system
+
+on boot
+    # Disable kernel logging for better performance
+    write /proc/sys/kernel/printk "0 0 0 0"
