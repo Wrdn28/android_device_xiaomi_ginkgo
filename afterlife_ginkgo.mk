@@ -29,7 +29,6 @@ $(call inherit-product, vendor/afterlife/config/common_full_phone.mk)
 # Afterlife flags
 TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_BOOT_ANIMATION_RES := 1080
-AFTERLIFE_GAPPS := false
 AFTERLIFE_MAINTAINER := Hirokixd
 
 # Device identifier
