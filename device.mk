@@ -116,6 +116,11 @@ PRODUCT_PACKAGES += \
 # Config Store
 PRODUCT_PACKAGES += \
     disable_configstore
+    
+# Dynamic Partitions
+PRODUCT_BUILD_SUPER_PARTITION := false
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
 
 # Display/Graphics
 PRODUCT_AAPT_CONFIG := normal
