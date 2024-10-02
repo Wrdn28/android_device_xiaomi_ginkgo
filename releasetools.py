@@ -1,5 +1,6 @@
 # Copyright (C) 2009 The Android Open Source Project
 # Copyright (c) 2011, The Linux Foundation. All rights reserved.
+# Copyright (C) 2017-2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import hashlib
 import common
 import re
 import os
@@ -52,30 +54,23 @@ def IncrementalOTA_GetBlockDifferences(info):
   return [BlockDifference(partition, target_image, source_images.get(partition))
           for partition, target_image in target_images.items()]
 
-def FullOTA_Assertions(info):
-  input_zip = info.input_zip
-  return
-
-def IncrementalOTA_Assertions(info):
-  input_zip = info.target_zip
-  return
-
 def FullOTA_InstallEnd(info):
-  input_zip = info.input_zip
-  OTA_InstallEnd(info, input_zip)
+  OTA_InstallEnd(info)
   return
 
 def IncrementalOTA_InstallEnd(info):
-  input_zip = info.target_zip
-  OTA_InstallEnd(info, input_zip)
+  OTA_InstallEnd(info)
   return
 
-def AddImage(info, input_zip, dir, basename, dest):
-  name = basename
-  data = input_zip.read(dir + "/"  + basename)
-  common.ZipWriteStr(info.output_zip, name, data)
+def AddImage(info, dir, basename, dest):
+  path = dir + "/" + basename
+  if path not in info.input_zip.namelist():
+    return
+
+  data = info.input_zip.read(path)
+  common.ZipWriteStr(info.output_zip, basename, data)
   info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
-  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+  info.script.AppendExtra('package_extract_file("%s", "%s");' % (basename, dest))
 
 def FullOTA_InstallBegin(info):
   AddImage(info, "RADIO", "super_dummy.img", "/tmp/super_dummy.img");
@@ -84,7 +79,7 @@ def FullOTA_InstallBegin(info):
   info.script.AppendExtra('run_program("/tmp/flash_super_dummy.sh");')
   return
 
-def OTA_InstallEnd(info, input_zip):
-  AddImage(info, "IMAGES", input_zip, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
-  AddImage(info, "IMAGES", input_zip, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
+def OTA_InstallEnd(info):
+  AddImage(info, "IMAGES", "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
+  AddImage(info, "IMAGES", "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
   return
