@@ -878,4 +878,7 @@
 
     <!-- Boost Framework -->
     <bool name="config_supportsBoostFramework">true</bool>
+    
+    <!-- media controls -->
+    <bool name="config_mediaControlsTurbulenceByDefault">false</bool>
 </resources>
