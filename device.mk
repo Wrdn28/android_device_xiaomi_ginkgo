@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The NusantaraProject-ROM
+# Copyright (C) 2021 The LineageOS
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -197,6 +197,9 @@ PRODUCT_PACKAGES += \
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/irsc/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+
+# Keys for sign
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage/signing/releasekey
 
 # Keylayouts
 PRODUCT_COPY_FILES += \

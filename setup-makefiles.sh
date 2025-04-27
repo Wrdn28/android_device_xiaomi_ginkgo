@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2021 The NusantaraProject-ROM
+# Copyright (C) 2021 The LineageOS
 #
 # SPDX-License-Identifier: Apache-2.0
 #
