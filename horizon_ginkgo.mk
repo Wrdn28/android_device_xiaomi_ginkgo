@@ -28,6 +28,7 @@ $(call inherit-product, vendor/horizon/config/common_full_phone.mk)
 # HorizonDroid Stuff
 HORIZON_BUILD_TYPE := OFFICIAL
 HORIZON_MAINTAINER := Hirokixd
+WITH_GMS := false
 
 # Device identifier
 PRODUCT_NAME := horizon_ginkgo
