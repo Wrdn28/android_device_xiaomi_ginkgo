@@ -28,6 +28,7 @@ $(call inherit-product, vendor/horizon/config/common_full_phone.mk)
 # HorizonDroid Stuff
 HORIZON_BUILD_TYPE := OFFICIAL
 HORIZON_MAINTAINER := Hirokixd
+TARGET_FACE_UNLOCK_SUPPORTED := true
 WITH_GMS := false
 
 # Device identifier
