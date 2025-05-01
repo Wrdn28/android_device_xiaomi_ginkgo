@@ -15,12 +15,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
 # Private Keys
--include vendor/lineage-priv/keys/keys.mk
+-include vendor/komodo-priv/keys/keys.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-komodo
 
 PRODUCT_PACKAGES += \
     GinkgoMiuiCamera \
