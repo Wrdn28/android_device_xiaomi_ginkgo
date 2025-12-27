@@ -42,7 +42,7 @@ PERF_DEFAULT_GOV := schedutil
 PERF_ANIM_OVERRIDE := true
 
 # GPU
-GPU_FREQS_PATH := /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies
+GPU_FREQS_PATH := /sys/class/kgsl/kgsl-3d0/freq_table_mhz
 GPU_MIN_FREQ_PATH := /sys/class/kgsl/kgsl-3d0/min_clock_mhz
 
 # High Brightness Mode (HBM)
