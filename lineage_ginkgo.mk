@@ -48,8 +48,10 @@ GPU_MIN_FREQ_PATH := /sys/class/kgsl/kgsl-3d0/min_clock_mhz
 # High Brightness Mode (HBM)
 HBM_SUPPORTED := false
 
-# Los Prebuilts
+# LineageOS apps
+ifneq ($(WITH_GMS),true)
 TARGET_INCLUDES_LOS_PREBUILTS := true
+endif
 
 PRODUCT_NAME := lineage_ginkgo
 PRODUCT_DEVICE := ginkgo
