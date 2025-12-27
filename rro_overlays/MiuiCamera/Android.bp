@@ -16,4 +16,5 @@ runtime_resource_overlay {
     name: "GinkgoMiuiCamera",
     sdk_version: "current",
     vendor: true,
+    overrides: ["Aperture", "Camera2", "GoogleCameraGo"],
 }

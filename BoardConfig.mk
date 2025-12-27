@@ -18,6 +18,11 @@ TARGET_OTA_ASSERT_DEVICE := ginkgo,willow
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := ginkgo
 
+# Build
+ifeq ($(TARGET_USES_MIUI_CAMERA),true)
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+endif
+
 # Display
 TARGET_SCREEN_DENSITY := 440
 

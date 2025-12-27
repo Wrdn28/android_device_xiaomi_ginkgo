@@ -16,6 +16,7 @@ $(call inherit-product, vendor/miuicamera/config.mk)
 
 PRODUCT_PACKAGES += \
     GinkgoMiuiCamera
+
 endif
 
 # AAPT
