@@ -10,10 +10,13 @@ $(call inherit-product, device/xiaomi/sm6125-common/common.mk)
 DEVICE_PATH := device/xiaomi/ginkgo
 
 # MiuiCamera
+ifeq ($(TARGET_USES_MIUI_CAMERA),true)
+$(warning Build with miuicamera)
+$(call inherit-product, vendor/miuicamera/config.mk)
+
 PRODUCT_PACKAGES += \
     GinkgoMiuiCamera
-
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
+endif
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal

@@ -53,6 +53,9 @@ ifneq ($(WITH_GMS),true)
 TARGET_INCLUDES_LOS_PREBUILTS := true
 endif
 
+# MiuiCamera
+TARGET_USES_MIUI_CAMERA := true
+
 PRODUCT_NAME := lineage_ginkgo
 PRODUCT_DEVICE := ginkgo
 PRODUCT_MANUFACTURER := Xiaomi
